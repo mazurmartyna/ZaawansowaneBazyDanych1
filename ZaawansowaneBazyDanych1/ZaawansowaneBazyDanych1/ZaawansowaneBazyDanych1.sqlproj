@@ -73,6 +73,7 @@
     <Folder Include="Security\" />
     <Folder Include="SalesLT\Sequences\" />
     <Folder Include="dbo\XMLSchemaCollections\" />
+    <Folder Include="Student_9\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\BuildVersion.sql" />
@@ -119,5 +120,9 @@
     <Build Include="SalesLT\Tables\ProductAttribute.sql" />
     <Build Include="237679\Tables\CustomerHistory.sql" />
     <Build Include="dbo\XMLSchemaCollections\ProductSchema.sql" />
+    <Build Include="Student_9\Views\MyLogicView.sql" />
+    <Build Include="SalesLT\Views\v_NotSoldProductsDetails.sql" />
+    <Build Include="SalesLT\Views\v_237679_order.sql" />
+    <Build Include="dbo\User Defined Types\M9_surname.sql" />
   </ItemGroup>
 </Project>

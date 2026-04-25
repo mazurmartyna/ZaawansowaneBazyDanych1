@@ -1,0 +1,4 @@
+﻿CREATE VIEW SalesLT.v_237679_order AS
+SELECT TOP 300 * 
+FROM SalesLT.Product
+ORDER BY ProductNumber DESC;
