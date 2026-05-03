@@ -19,8 +19,9 @@
     CONSTRAINT [PK_Customer_CustomerID] PRIMARY KEY CLUSTERED ([CustomerID] ASC),
     CONSTRAINT [AK_Customer_rowguid] UNIQUE NONCLUSTERED ([rowguid] ASC),
     PERIOD FOR SYSTEM_TIME ([SysStartTime], [SysEndTime])
-)
-WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE=[237679].[CustomerHistory], DATA_CONSISTENCY_CHECK=ON));
+);
+
+
 
 
 
@@ -31,3 +32,29 @@ GO
 CREATE NONCLUSTERED INDEX [IX_Customer_EmailAddress]
     ON [237679].[Customer]([EmailAddress] ASC);
 
+
+GO
+
+CREATE TRIGGER [237679].trg_Customer_PreventDelete
+ON [237679].Customer
+INSTEAD OF DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO SalesLT.DeletedCustomersLog 
+    (CustomerID, Title, FirstName, MiddleName, LastName, Suffix, CompanyName, SalesPerson, EmailAddress, 
+    Phone, PasswordHash, PasswordSalt, rowguid, ModifiedDate)
+    SELECT 
+    d.CustomerID, d.Title, d.FirstName, d.MiddleName, d.LastName, d.Suffix, d.CompanyName, d.SalesPerson, d.EmailAddress, 
+    d.Phone, d.PasswordHash, d.PasswordSalt, d.rowguid, d.ModifiedDate
+    FROM DELETED d
+    WHERE EXISTS (SELECT 1 FROM SalesLT.SalesOrderHeader soh 
+    WHERE d.CustomerID = soh.CustomerID)
+    
+ 
+    DELETE c FROM [237679].Customer c
+    INNER JOIN DELETED d ON c.CustomerID = d.CustomerID
+    WHERE NOT EXISTS (SELECT 1 FROM SalesLT.SalesOrderHeader soh 
+    WHERE d.CustomerID = soh.CustomerID)
+END;

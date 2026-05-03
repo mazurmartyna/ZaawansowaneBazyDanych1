@@ -1,6 +1,6 @@
-﻿CREATE TABLE [237679].[CustomerHistory] (
-    [CustomerID]   INT                NOT NULL,
-    [NameStyle]    [dbo].[NameStyle]  NOT NULL,
+﻿CREATE TABLE [SalesLT].[DeletedCustomersLog] (
+    [LogID]        INT                IDENTITY (1, 1) NOT NULL,
+    [CustomerID]   INT                NULL,
     [Title]        NVARCHAR (8)       NULL,
     [FirstName]    [dbo].[Name]       NOT NULL,
     [MiddleName]   [dbo].[Name]       NULL,
@@ -14,16 +14,6 @@
     [PasswordSalt] VARCHAR (10)       NOT NULL,
     [rowguid]      UNIQUEIDENTIFIER   NOT NULL,
     [ModifiedDate] DATETIME           NOT NULL,
-    [SysStartTime] DATETIME2 (7)      NOT NULL,
-    [SysEndTime]   DATETIME2 (7)      NOT NULL
+    PRIMARY KEY CLUSTERED ([LogID] ASC)
 );
-
-
-
-
-
-
-GO
-CREATE CLUSTERED INDEX [ix_CustomerHistory]
-    ON [237679].[CustomerHistory]([SysEndTime] ASC, [SysStartTime] ASC) WITH (DATA_COMPRESSION = PAGE);
 

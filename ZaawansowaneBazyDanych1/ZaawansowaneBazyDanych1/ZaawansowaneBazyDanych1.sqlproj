@@ -74,6 +74,7 @@
     <Folder Include="SalesLT\Sequences\" />
     <Folder Include="dbo\XMLSchemaCollections\" />
     <Folder Include="Student_9\Views\" />
+    <Folder Include="Database Triggers\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\BuildVersion.sql" />
@@ -124,5 +125,10 @@
     <Build Include="SalesLT\Views\v_NotSoldProductsDetails.sql" />
     <Build Include="SalesLT\Views\v_237679_order.sql" />
     <Build Include="dbo\User Defined Types\M9_surname.sql" />
+    <Build Include="SalesLT\Tables\ProductsHighValue.sql" />
+    <Build Include="SalesLT\Tables\ProductPriceHistory.sql" />
+    <Build Include="SalesLT\Tables\DeletedCustomersLog.sql" />
+    <Build Include="dbo\Tables\DatabaseAuditLog.sql" />
+    <Build Include="Database Triggers\trg_DatabaseAuditLogChanges.sql" />
   </ItemGroup>
 </Project>

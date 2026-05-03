@@ -28,3 +28,41 @@
     CONSTRAINT [AK_Product_rowguid] UNIQUE NONCLUSTERED ([rowguid] ASC)
 );
 
+
+GO
+
+CREATE TRIGGER SalesLT.trg_Product_PriceChange
+ON SalesLT.Product
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO SalesLT.ProductPriceHistory (ProductID, OldPrice, NewPrice)
+    SELECT 
+        i.ProductID,
+        d.ListPrice AS OldPrice,
+        i.ListPrice AS NewPrice
+    FROM INSERTED i
+    JOIN DELETED d ON i.ProductID = d.ProductID
+    WHERE ISNULL(d.ListPrice, -1) <> ISNULL(i.ListPrice, -1);
+END
+GO
+
+CREATE TRIGGER [SalesLT].trg_PriceChangeUpdateCheck
+ON SalesLT.Product
+FOR UPDATE
+AS
+BEGIN
+    IF EXISTS(
+        SELECT 1
+        FROM INSERTED i JOIN DELETED d ON i.ProductID = d.ProductID
+        WHERE i.ListPrice > d.ListPrice * 1.20
+    )
+    BEGIN
+        INSERT INTO dbo.ErrorLog (ErrorMessage, ErrorTime)
+        VALUES ('Price increase > 20%', GETDATE());
+            
+        THROW 50000, 'ListPrice cannot change by more than 20%', 1;
+    END
+END;
