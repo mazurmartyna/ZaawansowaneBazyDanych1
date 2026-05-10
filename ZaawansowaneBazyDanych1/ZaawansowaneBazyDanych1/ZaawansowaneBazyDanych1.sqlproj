@@ -75,6 +75,10 @@
     <Folder Include="dbo\XMLSchemaCollections\" />
     <Folder Include="Student_9\Views\" />
     <Folder Include="Database Triggers\" />
+    <Folder Include="237679\Views\" />
+    <Folder Include="Student_9\Functions\" />
+    <Folder Include="SalesLT\Functions\" />
+    <Folder Include="237679\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\BuildVersion.sql" />
@@ -130,5 +134,19 @@
     <Build Include="SalesLT\Tables\DeletedCustomersLog.sql" />
     <Build Include="dbo\Tables\DatabaseAuditLog.sql" />
     <Build Include="Database Triggers\trg_DatabaseAuditLogChanges.sql" />
+    <Build Include="237679\Tables\Trips.sql" />
+    <Build Include="237679\Tables\TramStops.sql" />
+    <Build Include="237679\Tables\Tram.sql" />
+    <Build Include="237679\Tables\Timetable.sql" />
+    <Build Include="237679\Tables\Routes.sql" />
+    <Build Include="237679\Views\v_LineSchedule.sql" />
+    <Build Include="Student_9\Functions\ufn_ProductsJsonByCategory.sql" />
+    <Build Include="Student_9\Functions\ufn_IsPriceHigherThanCurrent.sql" />
+    <Build Include="SalesLT\Functions\fn_BestRecord.sql" />
+    <Build Include="dbo\Functions\fn_GetCustomerCreditRisk.sql" />
+    <Build Include="237679\Functions\ufn_IsTramDelayed.sql" />
+    <Build Include="237679\Functions\ufn_CalculateDelays.sql" />
+    <Build Include="Student_9\Functions\ufn_ProductsWithHigherPrice.sql" />
+    <Build Include="237679\Functions\ufn_TramsAfterTime.sql" />
   </ItemGroup>
 </Project>
