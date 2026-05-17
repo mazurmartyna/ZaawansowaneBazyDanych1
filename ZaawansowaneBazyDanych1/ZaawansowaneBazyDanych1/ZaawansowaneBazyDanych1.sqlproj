@@ -79,6 +79,7 @@
     <Folder Include="Student_9\Functions\" />
     <Folder Include="SalesLT\Functions\" />
     <Folder Include="237679\Functions\" />
+    <Folder Include="SalesLT\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\BuildVersion.sql" />
@@ -148,5 +149,11 @@
     <Build Include="237679\Functions\ufn_CalculateDelays.sql" />
     <Build Include="Student_9\Functions\ufn_ProductsWithHigherPrice.sql" />
     <Build Include="237679\Functions\ufn_TramsAfterTime.sql" />
+    <Build Include="SalesLT\Tables\ProductInventory.sql" />
+    <Build Include="237679\Functions\ufn_IsLastNameUnique.sql" />
+    <Build Include="SalesLT\Stored Procedures\AddNewProduct.sql" />
+    <Build Include="dbo\Stored Procedures\usp_GetCustomerData.sql" />
+    <Build Include="dbo\Stored Procedures\usp_AddCustomers.sql" />
+    <Build Include="dbo\Stored Procedures\AlterCustomer.sql" />
   </ItemGroup>
 </Project>
