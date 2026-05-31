@@ -155,5 +155,8 @@
     <Build Include="dbo\Stored Procedures\usp_GetCustomerData.sql" />
     <Build Include="dbo\Stored Procedures\usp_AddCustomers.sql" />
     <Build Include="dbo\Stored Procedures\AlterCustomer.sql" />
+    <Build Include="dbo\Tables\LekturySzkolne.sql" />
+    <Build Include="dbo\Tables\BazaSklepuRowerowego.sql" />
+    <Build Include="dbo\Tables\AlbumyMuzyczne.sql" />
   </ItemGroup>
 </Project>
